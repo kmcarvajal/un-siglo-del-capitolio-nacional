@@ -60,7 +60,8 @@ const siguiente = document.querySelector(".siguiente");
 function actualizarHistoria() {
   const maximo = historia.scrollWidth - historia.clientWidth;
   const maximoBarra = barra.scrollWidth - barra.clientWidth;
-  barra.scrollLeft = maximo > 0 ? (historia.scrollLeft / maximo) * maximoBarra : 0;
+  barra.scrollLeft =
+    maximo > 0 ? (historia.scrollLeft / maximo) * maximoBarra : 0;
   posicionBarra = barra.scrollLeft;
   anterior.disabled = historia.scrollLeft <= 1;
   siguiente.disabled = historia.scrollLeft >= maximo - 1;
@@ -90,7 +91,8 @@ barra.addEventListener("scroll", () => {
   if (barra.scrollLeft === posicionBarra) return;
   const maximoBarra = barra.scrollWidth - barra.clientWidth;
   if (maximoBarra > 0) {
-    historia.scrollLeft = (barra.scrollLeft / maximoBarra) *
+    historia.scrollLeft =
+      (barra.scrollLeft / maximoBarra) *
       (historia.scrollWidth - historia.clientWidth);
   }
   posicionBarra = barra.scrollLeft;
