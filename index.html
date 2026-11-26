@@ -122,7 +122,9 @@
           </div>
           <button type="button" class="flecha siguiente" aria-label="Avanzar">▶</button>
         </div>
-        <input class="historia-barra" type="range" min="0" max="100" value="0" aria-label="Desplazar línea de tiempo" />
+        <div class="historia-barra" tabindex="0" role="region" aria-label="Desplazar línea de tiempo">
+          <div class="historia-barra-contenido" aria-hidden="true"></div>
+        </div>
       </section>
       <section class="congreso">
         <h2 class="h2-title">CÓMO ESTÁ CONFORMADO EL CONGRESO 2026-2030</h2>

@@ -53,14 +53,17 @@ window.addEventListener("load", dibujarLinea);
 // 2. Línea de tiempo: flechas y barra sincronizadas
 const historia = document.querySelector(".historia-scroll");
 const barra = document.querySelector(".historia-barra");
+const barraContenido = document.querySelector(".historia-barra-contenido");
+let posicionBarra = 0;
 const anterior = document.querySelector(".anterior");
 const siguiente = document.querySelector(".siguiente");
 function actualizarHistoria() {
   const maximo = historia.scrollWidth - historia.clientWidth;
-  barra.value = maximo > 0 ? (historia.scrollLeft / maximo) * 100 : 0;
+  const maximoBarra = barra.scrollWidth - barra.clientWidth;
+  barra.scrollLeft = maximo > 0 ? (historia.scrollLeft / maximo) * maximoBarra : 0;
+  posicionBarra = barra.scrollLeft;
   anterior.disabled = historia.scrollLeft <= 1;
   siguiente.disabled = historia.scrollLeft >= maximo - 1;
-  barra.disabled = maximo <= 0;
 }
 anterior.addEventListener("click", () =>
   historia.scrollBy({
@@ -75,14 +78,27 @@ siguiente.addEventListener("click", () =>
     behavior: "smooth",
   }),
 );
-barra.addEventListener("input", () => {
-  historia.scrollLeft =
-    (barra.value / 100) * (historia.scrollWidth - historia.clientWidth);
+// La longitud del segmento azul representa la parte visible de la historia.
+function ajustarBarra() {
+  const proporcion = historia.scrollWidth / historia.clientWidth || 1;
+  barraContenido.style.width = `${barra.clientWidth * proporcion}px`;
+  actualizarHistoria();
+}
+
+barra.addEventListener("scroll", () => {
+  // Evita repetir el desplazamiento cuando la barra se mueve desde las flechas.
+  if (barra.scrollLeft === posicionBarra) return;
+  const maximoBarra = barra.scrollWidth - barra.clientWidth;
+  if (maximoBarra > 0) {
+    historia.scrollLeft = (barra.scrollLeft / maximoBarra) *
+      (historia.scrollWidth - historia.clientWidth);
+  }
+  posicionBarra = barra.scrollLeft;
 });
 historia.addEventListener("scroll", actualizarHistoria);
-window.addEventListener("resize", actualizarHistoria);
-window.addEventListener("load", actualizarHistoria);
-actualizarHistoria();
+window.addEventListener("resize", ajustarBarra);
+window.addEventListener("load", ajustarBarra);
+ajustarBarra();
 
 // 3. Alternar entre Senado y Cámara
 const senado = document.querySelector(".button-senado");
