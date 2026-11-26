@@ -1,14 +1,15 @@
+/* Variables generales */
 :root {
-    --pg-bg: #FFFFFF ;
+    --pg-bg: #FFFFFF;
     --ink: #000000;
+    --azul: #538eab;
+    --azul-oscuro: #437c9b;
 }
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-}
-
-html {
-    background-color: var(--pg-bg);
 }
 
 body {
@@ -16,5 +17,366 @@ body {
     min-width: 320px;
     background-color: var(--pg-bg);
     color: var(--ink);
+    font-family: Skilt, Arial, sans-serif;
 }
 
+
+/* Tipografía */
+@font-face {
+    font-family: Skilt;
+    src: url('./OpenType CFF Std/SkiltGothic-Regular.otf');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Skilt;
+    src: url('./OpenType CFF Std/SkiltGothic-Bold.otf');
+    font-weight: 700;
+}
+
+/* Reglas generales */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+p {
+    margin: 0;
+}
+button {
+    font: inherit;
+    cursor: pointer;
+}
+[hidden] {
+    display: none !important;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+.page-shell, footer {
+    width: min(100% - 32px, 1150px);
+    margin: 0 auto;
+}
+section {
+    margin-bottom: 48px;
+}
+.h2-title {
+    font-size: 20px;
+    line-height: 1.2;
+    text-align: center;
+    color: var(--azul);
+    margin: 0 0 22px;
+}
+/* Apertura */
+.apertura {
+    padding-top: 44px;
+    margin-bottom: 42px;
+}
+.apertura img {
+    width: 794px;
+    margin: auto;
+}
+/* Personas y datos de construcción */
+.personas > picture img {
+    width: 960px;
+    margin: auto;
+}
+.dato-construccion {
+    width: 258px;
+    margin: 30px auto 22px;
+}
+.dato-monumento {
+    width: 310px;
+    margin: 20px auto 0;
+}
+
+/* Capitolio: los puntos comparten el tamaño de la imagen */
+.capitolio-interactivo {
+    position: relative;
+}
+.capitolio-scroll {
+    width: 100%;
+}
+.graphic-capitolio {
+    position: relative;
+    width: 719px;
+    max-width: 64%;
+    margin: auto;
+}
+.capitolio-base {
+    width: 100%;
+}
+.punto {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 15px;
+    border: 1px solid white;
+    background: #4388b9;
+    border-radius: 50%;
+    padding: 0;
+    z-index: 3;
+}
+.punto::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+}
+.punto[aria-expanded='true'] {
+    background: #145578;
+    box-shadow: 0 0 0 3px #c3dce8;
+}
+.detalle {
+    position: absolute;
+    z-index: 2;
+    width: 25%;
+    pointer-events: none;
+}
+.detalle img {
+    width: 100%;
+}
+.detalle-1 {
+    left: 0;
+    top: 0;
+}
+.detalle-2 {
+    left: 0;
+    bottom: 0;
+    width: 29%;
+}
+.detalle-3 {
+    right: 0;
+    top: 0;
+}
+.detalle-4 {
+    right: 0;
+    top: 22%;
+}
+.detalle-5 {
+    right: 0;
+    bottom: 0;
+}
+.detalle-6 {
+    right: 0;
+    top: 42%;
+    width: 20%;
+}
+.linea-detalle {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible;
+}
+
+/* Historia: desplazamiento horizontal nativo */
+.historia-slider {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.historia-scroll {
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex: 1;
+    min-width: 0;
+}
+.historia-scroll::-webkit-scrollbar {
+    display: none;
+}
+.historia-scroll img {
+    width: 1904px;
+    max-width: none;
+}
+.flecha {
+    border: 0;
+    color: var(--azul-oscuro);
+    background: white;
+    padding: 5px;
+}
+.flecha:disabled {
+    visibility: hidden;
+}
+.historia-barra {
+    display: block;
+    width: 32%;
+    margin: 26px auto 0;
+    accent-color: var(--azul);
+    cursor: pointer;
+    height: 8px;
+}
+
+/* Congreso */
+.content-congreso {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+.controles-congreso {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.controles-congreso button {
+    width: 128px;
+    border: 1px solid var(--azul);
+    border-radius: 10px;
+    background: white;
+    color: var(--azul);
+    font-size: 16px;
+    font-weight: 700;
+    padding: 5px 12px;
+}
+.controles-congreso button[aria-pressed='true'] {
+    background: var(--azul);
+    color: white;
+}
+.controles-congreso p {
+    margin-top: 20px;
+    font-size: 16px;
+}
+.controles-congreso span {
+    font-size: 44px;
+    color: var(--azul);
+}
+.graphic-congreso {
+    width: 640px;
+    min-width: 0;
+}
+.graphic-congreso img {
+    width: 100%;
+}
+.img-senado {
+    max-width: 540px;
+    margin: auto;
+}
+
+/* Funciones y créditos */
+.content-que-hace {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 24px;
+    max-width: 850px;
+    margin: auto;
+}
+.item-que-hace {
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.15;
+}
+.item-que-hace img {
+    height: 70px;
+    width: auto;
+    margin: 0 auto 10px;
+}
+.item-que-hace strong {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-size: 17px;
+}
+footer {
+    max-width: 760px;
+    margin-bottom: 80px;
+    text-align: right;
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .page-shell, footer {
+        width: calc(100% - 24px);
+    }
+    section {
+        margin-bottom: 52px;
+    }
+    .apertura {
+        padding-top: 28px;
+        margin-bottom: 48px;
+    }
+    .apertura img {
+        width: 319px;
+    }
+    .h2-title {
+        font-size: 20px;
+        margin-bottom: 26px;
+    }
+    .personas > picture img {
+        width: 307px;
+    }
+    .dato-construccion {
+        margin: 36px auto 48px;
+    }
+    .capitolio-scroll {
+        overflow-x: auto;
+        padding-bottom: 16px;
+    }
+    .graphic-capitolio {
+        width: 600px;
+        max-width: none;
+        margin: 0;
+    }
+    .detalles-capitolio {
+        position: relative;
+    }
+    .detalle {
+        position: relative;
+        inset: auto;
+        width: min(100%, 344px);
+        margin: 16px auto;
+        pointer-events: auto;
+    }
+    .linea-detalle {
+        display: none;
+    }
+    .dato-monumento {
+        margin-top: 28px;
+    }
+    .historia-barra {
+        width: 100%;
+    }
+    .content-congreso {
+        display: block;
+    }
+    .controles-congreso {
+        flex-direction: row;
+        justify-content: center;
+        gap: 24px;
+        margin-bottom: 24px;
+    }
+    .controles-congreso p {
+        display: none;
+    }
+    .graphic-congreso {
+        width: 100%;
+    }
+    .content-que-hace {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px 16px;
+    }
+    /* En móvil, control político y público pasan a la segunda fila. */
+    .item-que-hace:nth-child(3), .item-que-hace:nth-child(4) {
+        order: 1;
+    }
+    .item-que-hace:nth-child(7), .item-que-hace:nth-child(8) {
+        order: 2;
+    }
+    footer {
+        font-size: 12px;
+        margin-bottom: 36px;
+    }
+}

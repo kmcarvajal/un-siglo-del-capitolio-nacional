@@ -1,0 +1,99 @@
+// 1. Puntos interactivos del Capitolio
+const capitolio = document.querySelector(".capitolio-interactivo");
+const puntos = document.querySelectorAll(".punto");
+const detalles = document.querySelectorAll(".detalle");
+const linea = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+linea.classList.add("linea-detalle");
+linea.setAttribute("aria-hidden", "true");
+capitolio.append(linea);
+
+function dibujarLinea() {
+  linea.replaceChildren();
+  const punto = document.querySelector('.punto[aria-expanded="true"]');
+  if (!punto || window.innerWidth <= 640) return;
+  const detalle = document.getElementById(punto.getAttribute("aria-controls"));
+  const area = capitolio.getBoundingClientRect();
+  const origen = punto.getBoundingClientRect();
+  const destino = detalle.getBoundingClientRect();
+  const x = origen.left + origen.width / 2 - area.left;
+  const y = origen.top + origen.height / 2 - area.top;
+  const finX =
+    (destino.left < origen.left ? destino.right : destino.left) - area.left;
+  const finY = destino.top + destino.height / 2 - area.top;
+  const mitadX = (x + finX) / 2;
+  const trazo = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "polyline",
+  );
+  trazo.setAttribute("points", `${x},${y} ${mitadX},${finY} ${finX},${finY}`);
+  trazo.setAttribute("fill", "none");
+  trazo.setAttribute("stroke", "#4388b9");
+  trazo.setAttribute("stroke-width", "2");
+  linea.append(trazo);
+}
+
+puntos.forEach(function (punto) {
+  punto.addEventListener("click", function () {
+    const abierto = punto.getAttribute("aria-expanded") === "true";
+    puntos.forEach((boton) => boton.setAttribute("aria-expanded", "false"));
+    detalles.forEach((detalle) => (detalle.hidden = true));
+    if (!abierto) {
+      punto.setAttribute("aria-expanded", "true");
+      const detalle = document.getElementById(
+        punto.getAttribute("aria-controls"),
+      );
+      detalle.hidden = false;
+    }
+    dibujarLinea();
+  });
+});
+window.addEventListener("resize", dibujarLinea);
+window.addEventListener("load", dibujarLinea);
+
+// 2. Línea de tiempo: flechas y barra sincronizadas
+const historia = document.querySelector(".historia-scroll");
+const barra = document.querySelector(".historia-barra");
+const anterior = document.querySelector(".anterior");
+const siguiente = document.querySelector(".siguiente");
+function actualizarHistoria() {
+  const maximo = historia.scrollWidth - historia.clientWidth;
+  barra.value = maximo > 0 ? (historia.scrollLeft / maximo) * 100 : 0;
+  anterior.disabled = historia.scrollLeft <= 1;
+  siguiente.disabled = historia.scrollLeft >= maximo - 1;
+  barra.disabled = maximo <= 0;
+}
+anterior.addEventListener("click", () =>
+  historia.scrollBy({
+    left: -150,
+    behavior: "smooth",
+  }),
+);
+
+siguiente.addEventListener("click", () =>
+  historia.scrollBy({
+    left: 150,
+    behavior: "smooth",
+  }),
+);
+barra.addEventListener("input", () => {
+  historia.scrollLeft =
+    (barra.value / 100) * (historia.scrollWidth - historia.clientWidth);
+});
+historia.addEventListener("scroll", actualizarHistoria);
+window.addEventListener("resize", actualizarHistoria);
+window.addEventListener("load", actualizarHistoria);
+actualizarHistoria();
+
+// 3. Alternar entre Senado y Cámara
+const senado = document.querySelector(".button-senado");
+const camara = document.querySelector(".button-camara");
+const imgSenado = document.querySelector(".img-senado");
+const imgCamara = document.querySelector(".img-camara");
+function mostrarCongreso(esSenado) {
+  imgSenado.hidden = !esSenado;
+  imgCamara.hidden = esSenado;
+  senado.setAttribute("aria-pressed", String(esSenado));
+  camara.setAttribute("aria-pressed", String(!esSenado));
+}
+senado.addEventListener("click", () => mostrarCongreso(true));
+camara.addEventListener("click", () => mostrarCongreso(false));

@@ -2,14 +2,13 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="widht=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
     <title>Un siglo del Capitolio Nacional</title>
     <meta
       name="description"
-      content="Infografía intecractiva sobre el siglo del Capitolio Nacional."
+      content="Infografía interactiva sobre el siglo del Capitolio Nacional."
     />
-    <link rel="stylesheet" href="" />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
@@ -42,22 +41,71 @@
           />
         </picture>
         <img
-          src="./assets/3pc-mo.svg"
+          class="dato-construccion" src="./assets/3pc-mo.svg"
           alt="78 años: este fue el tiempo que se tardó la construcción de toda la edificación."
         />
-        <div class="graphic-capitolio">
-          <img
-            src="./assets/4pc-mo.png"
-            alt="Imagen gráfica del Capitolio nacional"
-          />
+        <div class="capitolio-interactivo">
+        <div class="capitolio-scroll" tabindex="0" aria-label="Vista desplazable del Capitolio">
+          <div class="graphic-capitolio">
+            <img class="capitolio-base" src="./assets/4pc-mo.png" alt="Vista del Capitolio Nacional" />
+            <!-- Cada punto se ubica mediante porcentajes de la imagen base. -->
+            <button type="button" class="punto punto-1" style="--x: 16%; --y: 19%" data-punto="1" aria-label="Recinto del Senado y fresco del Salón de la Constitución" aria-controls="detalle-1" aria-expanded="false"></button>
+            <button type="button" class="punto punto-2" style="--x: 48%; --y: 17%" data-punto="2" aria-label="Salón Elíptico y mural Congreso de Cúcuta" aria-controls="detalle-2" aria-expanded="false"></button>
+            <button type="button" class="punto punto-3" style="--x: 60%; --y: 6%" data-punto="3" aria-label="Salón Boyacá" aria-controls="detalle-3" aria-expanded="false"></button>
+            <button type="button" class="punto punto-4" style="--x: 60%; --y: 34%" data-punto="4" aria-label="Patio Tomás Cipriano de Mosquera" aria-controls="detalle-4" aria-expanded="false"></button>
+            <button type="button" class="punto punto-5" style="--x: 76%; --y: 49%" data-punto="5" aria-label="Columnata" aria-controls="detalle-5" aria-expanded="false"></button>
+            <button type="button" class="punto punto-6" style="--x: 95%; --y: 20%" data-punto="6" aria-label="Grifos de Gaston Lelarge" aria-controls="detalle-6" aria-expanded="false"></button>
+          </div>
+        </div>
+        <div class="detalles-capitolio">
+          <div class="detalle detalle-1" id="detalle-1" hidden>
+            <picture>
+              <source media="(max-width: 640px)" srcset="./assets/sliders-mo/4.1mo.png" />
+              <img src="./assets/sliders-pc/4.1pc.png" alt="Recinto del Senado y fresco del Salón de la Constitución" />
+            </picture>
+          </div>
+          <div class="detalle detalle-2" id="detalle-2" hidden>
+            <picture>
+              <source media="(max-width: 640px)" srcset="./assets/sliders-mo/4.2mo.png" />
+              <img src="./assets/sliders-pc/4.2pc.png" alt="Salón Elíptico y mural Congreso de Cúcuta" />
+            </picture>
+          </div>
+          <div class="detalle detalle-3" id="detalle-3" hidden>
+            <picture>
+              <source media="(max-width: 640px)" srcset="./assets/sliders-mo/4.3mo.png" />
+              <img src="./assets/sliders-pc/4.3pc.png" alt="Salón Boyacá" />
+            </picture>
+          </div>
+          <div class="detalle detalle-4" id="detalle-4" hidden>
+            <picture>
+              <source media="(max-width: 640px)" srcset="./assets/sliders-mo/4.4mo.png" />
+              <img src="./assets/sliders-pc/4.4pc.png" alt="Patio Tomás Cipriano de Mosquera" />
+            </picture>
+          </div>
+          <div class="detalle detalle-5" id="detalle-5" hidden>
+            <picture>
+              <source media="(max-width: 640px)" srcset="./assets/sliders-mo/4.5mo.png" />
+              <img src="./assets/sliders-pc/4.5pc.png" alt="Columnata" />
+            </picture>
+          </div>
+          <div class="detalle detalle-6" id="detalle-6" hidden>
+            <picture>
+              <source media="(max-width: 640px)" srcset="./assets/sliders-mo/4.6mo.png" />
+              <img src="./assets/sliders-pc/4.6pc.png" alt="Grifos de Gaston Lelarge" />
+            </picture>
+          </div>
+        </div>
         </div>
         <img
-          src="./assets/5pc-mo.svg"
+          class="dato-monumento" src="./assets/5pc-mo.svg"
           alt="11 de agosto de 1975: el Capitolio es declarado Monumento Nacional."
         />
       </section>
-      <section class="hostoria">
+      <section class="historia">
         <h2 class="h2-title">DEL SOLAR COLONIAL AL CAPITOLIO</h2>
+        <div class="historia-slider">
+          <button type="button" class="flecha anterior" aria-label="Retroceder">◀</button>
+          <div class="historia-scroll" tabindex="0" aria-label="Línea de tiempo desplazable">
         <img
           src="./assets/6pc-mo.svg"
           alt="Línea de tiempo de la historia del Capitolio Nacional:
@@ -71,23 +119,27 @@
 - **1846:** La Ley del 17 de marzo, expedida durante el gobierno de Tomás Cipriano de Mosquera, ordena construir la sede de los Altos Poderes.
 - **1926:** No tuvo inauguración oficial. Se considera terminado el 7 de agosto de 1926, con la posesión de Miguel Abadía Méndez."
         />
+          </div>
+          <button type="button" class="flecha siguiente" aria-label="Avanzar">▶</button>
+        </div>
+        <input class="historia-barra" type="range" min="0" max="100" value="0" aria-label="Desplazar línea de tiempo" />
       </section>
       <section class="congreso">
         <h2 class="h2-title">CÓMO ESTÁ CONFORMADO EL CONGRESO 2026-2030</h2>
-        <div>
-          <div>
-            <button class="button-senado" type="button">SENADO</button>
-            <button class="button-senado" type="button">CAMARA</button>
-            <P><strong>TOTAL CONGRESISTAS</strong><br><span>286</span></P>
+        <div class="content-congreso">
+          <div class="controles-congreso">
+            <button class="button-senado" type="button" aria-pressed="true" aria-controls="grafico-senado">SENADO</button>
+            <button class="button-camara" type="button" aria-pressed="false" aria-controls="grafico-camara">CÁMARA</button>
+            <p><strong>TOTAL CONGRESISTAS</strong><br><span>286</span></p>
           </div>
           <div class="graphic-congreso">
             <img
-              class="img-senado"
+              class="img-senado" id="grafico-senado"
               src="./assets/7senado-pc-mo.svg"
               alt="Gráfico semicircular que representa la distribución de las 103 curules del Senado de la República: 100 de circunscripción nacional, 2 de comunidades indígenas y 1 de oposición."
             />
             <img
-              class="img-camara"
+              class="img-camara" id="grafico-camara" hidden
               src="./assets/7camara-pc-mo.svg"
               alt="Gráfico semicircular que representa la distribución de las 183 curules de la Cámara de Representantes: 161 de circunscripciones territoriales, 16 de Circunscripciones Transitorias Especiales de Paz, 2 de comunidades afrodescendientes, 1 de comunidades indígenas, 1 de colombianos en el exterior, 1 de la comunidad raizal y 1 de oposición."
             />
@@ -126,9 +178,9 @@
             </p>
           </div>
           <div class="item-que-hace">
-            <img src="./assets/8.5pc-mo.svg" alt="Icono Control politico." />
+            <img src="./assets/8.5pc-mo.svg" alt="Icono Control político." />
             <p>
-              <strong>Control politico</strong><br />Cita y cuestiona a
+              <strong>Control político</strong><br />Cita y cuestiona a
               ministros y otros funcionarios del Gobierno.
             </p>
           </div>
