@@ -40,11 +40,17 @@
             alt="Imagen del subtitulo «Las personas detrás de la construcción», con seis retratos en blanco y negro acompañados de sus nombres y profesiones: Thomas Reed y Pietro Cantini, arquitectos; Luigi Ramelli y Colombo Ramelli, ornamentadores; Gaston Lelarge, arquitecto; y Alberto Manrique Martín, ingeniero y arquitecto."
           />
         </picture>
-        <img
-          class="dato-construccion"
-          src="./assets/3pc-mo.svg"
-          alt="78 años: este fue el tiempo que se tardó la construcción de toda la edificación."
-        />
+        <picture>
+          <source
+            media="(max-width: 640px)"
+            srcset="./assets/sliders-mo/3mo.svg"
+          />
+          <img
+            class="dato-construccion"
+            src="./assets/sliders-pc/3pc.svg"
+            alt="78 años: este fue el tiempo que se tardó la construcción de toda la edificación."
+          />
+        </picture>
         <p class="indice-capitolio">
           <span class="indice-desktop"> Seleccione cada punto </span>
           <span class="indice-mobile">
@@ -134,6 +140,9 @@
                   alt="Recinto del Senado y fresco del Salón de la Constitución"
                 />
               </picture>
+              <button type="button" class="cerrar-detalle" aria-label="Cerrar detalle">
+                <img src="./assets/sliders-mo/Cerrar.svg" alt="" />
+              </button>
             </div>
             <div class="detalle detalle-2" id="detalle-2" hidden>
               <picture>
@@ -146,6 +155,9 @@
                   alt="Salón Elíptico y mural Congreso de Cúcuta"
                 />
               </picture>
+              <button type="button" class="cerrar-detalle" aria-label="Cerrar detalle">
+                <img src="./assets/sliders-mo/Cerrar.svg" alt="" />
+              </button>
             </div>
             <div class="detalle detalle-3" id="detalle-3" hidden>
               <picture>
@@ -155,6 +167,9 @@
                 />
                 <img src="./assets/sliders-pc/4.3pc.png" alt="Salón Boyacá" />
               </picture>
+              <button type="button" class="cerrar-detalle" aria-label="Cerrar detalle">
+                <img src="./assets/sliders-mo/Cerrar.svg" alt="" />
+              </button>
             </div>
             <div class="detalle detalle-4" id="detalle-4" hidden>
               <picture>
@@ -167,6 +182,9 @@
                   alt="Patio Tomás Cipriano de Mosquera"
                 />
               </picture>
+              <button type="button" class="cerrar-detalle" aria-label="Cerrar detalle">
+                <img src="./assets/sliders-mo/Cerrar.svg" alt="" />
+              </button>
             </div>
             <div class="detalle detalle-5" id="detalle-5" hidden>
               <picture>
@@ -176,6 +194,9 @@
                 />
                 <img src="./assets/sliders-pc/4.5pc.png" alt="Columnata" />
               </picture>
+              <button type="button" class="cerrar-detalle" aria-label="Cerrar detalle">
+                <img src="./assets/sliders-mo/Cerrar.svg" alt="" />
+              </button>
             </div>
             <div class="detalle detalle-6" id="detalle-6" hidden>
               <picture>
@@ -188,14 +209,25 @@
                   alt="Grifos de Gaston Lelarge"
                 />
               </picture>
+              <button type="button" class="cerrar-detalle" aria-label="Cerrar detalle">
+                <img src="./assets/sliders-mo/Cerrar.svg" alt="" />
+              </button>
             </div>
           </div>
         </div>
-        <img
-          class="dato-monumento"
-          src="./assets/5pc-mo.svg"
-          alt="11 de agosto de 1975: el Capitolio es declarado Monumento Nacional."
-        />
+        <div>
+          <picture>
+            <source
+              media="(max-width: 640px)"
+              srcset="./assets/sliders-mo/5mo.svg"
+            />
+            <img
+              class="dato-monumento"
+              src="./assets/sliders-pc/5pc.svg"
+              alt="11 de agosto de 1975: el Capitolio es declarado Monumento Nacional."
+            />
+          </picture>
+        </div>
       </section>
       <section class="historia">
         <h2 class="h2-title">DEL SOLAR COLONIAL AL CAPITOLIO</h2>
@@ -259,19 +291,28 @@
             <p><strong>TOTAL CONGRESISTAS</strong><br /><span>286</span></p>
           </div>
           <div class="graphic-congreso">
-            <img
-              class="img-senado"
-              id="grafico-senado"
-              src="./assets/7senado-pc-mo.svg"
-              alt="Gráfico semicircular que representa la distribución de las 103 curules del Senado de la República: 100 de circunscripción nacional, 2 de comunidades indígenas y 1 de oposición."
-            />
             <picture>
-              <source media="(max-width: 640px)" srcset="./assets/7camara-mo.svg" />
+              <source
+                media="(max-width: 640px)"
+                srcset="./assets/sliders-mo/7senado-mo.svg"
+              />
+              <img
+                class="img-senado"
+                id="grafico-senado"
+                src="./assets/sliders-pc/7senado-pc.svg"
+                alt="Gráfico semicircular que representa la distribución de las 103 curules del Senado de la República: 100 de circunscripción nacional, 2 de comunidades indígenas y 1 de oposición."
+              />
+            </picture>
+            <picture>
+              <source
+                media="(max-width: 640px)"
+                srcset="./assets/sliders-mo/7camara-mo.svg"
+              />
               <img
                 class="img-camara"
                 id="grafico-camara"
                 hidden
-                src="./assets/7camara-pc.svg"
+                src="./assets/sliders-pc/7camara-pc.svg"
                 alt="Gráfico semicircular que representa la distribución de las 183 curules de la Cámara de Representantes: 161 de circunscripciones territoriales, 16 de Circunscripciones Transitorias Especiales de Paz, 2 de comunidades afrodescendientes, 1 de comunidades indígenas, 1 de colombianos en el exterior, 1 de la comunidad raizal y 1 de oposición."
               />
             </picture>

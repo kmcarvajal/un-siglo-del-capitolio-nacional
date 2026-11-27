@@ -136,7 +136,7 @@ section {
 }
 
 /* Personas y datos de construcción */
-.personas > picture img {
+.personas > picture:first-of-type img {
   width: 960px;
   margin: auto;
 }
@@ -226,6 +226,10 @@ section {
 
 .detalle img {
   width: 100%;
+}
+
+.cerrar-detalle {
+  display: none;
 }
 
 .detalle-1 {
@@ -517,7 +521,7 @@ footer {
     margin-bottom: 26px;
   }
 
-  .personas > picture img {
+  .personas > picture:first-of-type img {
     width: 307px;
   }
 
@@ -588,7 +592,26 @@ footer {
     width: min(80%, 322px);
     margin: 0;
     pointer-events: auto;
-    cursor: pointer;
+  }
+
+  .cerrar-detalle {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 1;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    transform: translate(25%, -25%);
+  }
+
+  .cerrar-detalle img {
+    width: 22px;
+    height: 22px;
   }
 
   .linea-detalle {

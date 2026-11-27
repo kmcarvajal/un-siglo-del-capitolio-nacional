@@ -34,6 +34,7 @@ function dibujarLinea() {
 puntos.forEach(function (punto) {
   punto.addEventListener("click", function () {
     const abierto = punto.getAttribute("aria-expanded") === "true";
+    if (abierto && window.matchMedia("(max-width: 640px)").matches) return;
     puntos.forEach((boton) => boton.setAttribute("aria-expanded", "false"));
     detalles.forEach((detalle) => (detalle.hidden = true));
     if (!abierto) {
@@ -49,18 +50,16 @@ puntos.forEach(function (punto) {
 window.addEventListener("resize", dibujarLinea);
 window.addEventListener("load", dibujarLinea);
 
-// Cerrar el detalle al pulsar sobre la imagen en mobile
+// Cerrar el detalle en mobile únicamente desde el botón de cierre.
 detalles.forEach(function (detalle) {
-  detalle.addEventListener("click", function () {
-    if (window.innerWidth <= 640) {
-      detalle.hidden = true;
-
-      puntos.forEach(function (punto) {
-        punto.setAttribute("aria-expanded", "false");
-      });
-
-      dibujarLinea();
-    }
+  const cerrar = detalle.querySelector(".cerrar-detalle");
+  cerrar.addEventListener("click", function () {
+    if (!window.matchMedia("(max-width: 640px)").matches) return;
+    const puntoActivo = document.querySelector('.punto[aria-expanded="true"]');
+    detalle.hidden = true;
+    puntos.forEach((punto) => punto.setAttribute("aria-expanded", "false"));
+    dibujarLinea();
+    if (puntoActivo) puntoActivo.focus({ preventScroll: true });
   });
 });
 
