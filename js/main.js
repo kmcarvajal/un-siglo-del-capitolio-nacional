@@ -50,6 +50,21 @@ puntos.forEach(function (punto) {
 window.addEventListener("resize", dibujarLinea);
 window.addEventListener("load", dibujarLinea);
 
+// Cerrar el detalle al pulsar sobre la imagen en mobile
+detalles.forEach(function (detalle) {
+  detalle.addEventListener("click", function () {
+    if (window.innerWidth <= 640) {
+      detalle.hidden = true;
+
+      puntos.forEach(function (punto) {
+        punto.setAttribute("aria-expanded", "false");
+      });
+
+      dibujarLinea();
+    }
+  });
+});
+
 // 2. Línea de tiempo: flechas y barra sincronizadas
 const historia = document.querySelector(".historia-scroll");
 const barra = document.querySelector(".historia-barra");
