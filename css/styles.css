@@ -486,6 +486,10 @@ footer {
 
 /* Mobile */
 @media (max-width: 640px) {
+  .capitolio-interactivo {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
   .page-shell,
   footer {
     width: calc(100% - 24px);
