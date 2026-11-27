@@ -165,29 +165,33 @@ section {
   width: 100%;
 }
 .detalle-1 {
-  left: 0;
+  left: -5%;
   top: 0;
+  width: 30%;
 }
 .detalle-2 {
-  left: 0;
-  bottom: 0;
-  width: 29%;
+  left: -1%;
+  bottom: 10%;
+  width: 34%;
 }
 .detalle-3 {
-  right: 0;
+  right: 4%;
   top: 0;
+  width: 16%;
 }
 .detalle-4 {
   right: 0;
-  top: 22%;
+  top: 26%;
+  width: 22%;
 }
 .detalle-5 {
-  right: 0;
-  bottom: 0;
+  right: 1%;
+  bottom: 20%;
+  width: 18%;
 }
 .detalle-6 {
-  right: 0;
-  top: 42%;
+  right: 0%;
+  top: 12%;
   width: 20%;
 }
 .linea-detalle {
