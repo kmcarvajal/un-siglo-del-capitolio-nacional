@@ -17,8 +17,7 @@ function dibujarLinea() {
   const destino = detalle.getBoundingClientRect();
   const x = origen.left + origen.width / 2 - area.left;
   const y = origen.top + origen.height / 2 - area.top;
-  const finX =
-    (destino.left < origen.left ? destino.right : destino.left) - area.left;
+  const finX = destino.left + destino.width / 2 - area.left;
   const finY = destino.top + destino.height / 2 - area.top;
   const mitadX = (x + finX) / 2;
   const trazo = document.createElementNS(
