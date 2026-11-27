@@ -265,13 +265,16 @@
               src="./assets/7senado-pc-mo.svg"
               alt="Gráfico semicircular que representa la distribución de las 103 curules del Senado de la República: 100 de circunscripción nacional, 2 de comunidades indígenas y 1 de oposición."
             />
-            <img
-              class="img-camara"
-              id="grafico-camara"
-              hidden
-              src="./assets/7camara-pc-mo.svg"
-              alt="Gráfico semicircular que representa la distribución de las 183 curules de la Cámara de Representantes: 161 de circunscripciones territoriales, 16 de Circunscripciones Transitorias Especiales de Paz, 2 de comunidades afrodescendientes, 1 de comunidades indígenas, 1 de colombianos en el exterior, 1 de la comunidad raizal y 1 de oposición."
-            />
+            <picture>
+              <source media="(max-width: 640px)" srcset="./assets/7camara-mo.svg" />
+              <img
+                class="img-camara"
+                id="grafico-camara"
+                hidden
+                src="./assets/7camara-pc.svg"
+                alt="Gráfico semicircular que representa la distribución de las 183 curules de la Cámara de Representantes: 161 de circunscripciones territoriales, 16 de Circunscripciones Transitorias Especiales de Paz, 2 de comunidades afrodescendientes, 1 de comunidades indígenas, 1 de colombianos en el exterior, 1 de la comunidad raizal y 1 de oposición."
+              />
+            </picture>
           </div>
         </div>
       </section>
