@@ -20,6 +20,23 @@ body {
   font-family: Skilt, Arial, sans-serif;
 }
 
+/* Degradado inferior de la página */
+body::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8vh;
+  background: linear-gradient(to bottom, transparent 0%, var(--pg-bg) 90%);
+  z-index: 100;
+  pointer-events: none;
+}
+
+body.fin-pagina::after {
+  opacity: 0;
+}
+
 /* Tipografía */
 @font-face {
   font-family: Skilt;
@@ -258,6 +275,7 @@ section {
   display: flex;
   align-items: center;
   gap: 8px;
+  position: relative;
 }
 
 .historia-scroll {
@@ -288,6 +306,39 @@ section {
   visibility: hidden;
 }
 
+/* Degradados laterales de la línea de tiempo */
+.historia-slider::before,
+.historia-slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Degradado izquierdo */
+.historia-slider::before {
+  left: 34px;
+  background: linear-gradient(to right, var(--pg-bg) 0%, transparent 100%);
+}
+
+/* Degradado derecho */
+.historia-slider::after {
+  right: 34px;
+  background: linear-gradient(to left, var(--pg-bg) 0%, transparent 100%);
+}
+
+/* Mostrar degradados según las flechas */
+.historia-slider:has(.anterior:not(:disabled))::before {
+  opacity: 1;
+}
+
+.historia-slider:has(.siguiente:not(:disabled))::after {
+  opacity: 1;
+}
 .historia-barra {
   display: block;
   width: 32%;
@@ -509,6 +560,11 @@ footer {
   /* Historia */
   .historia-barra {
     width: 100%;
+  }
+
+  .historia-slider::before,
+  .historia-slider::after {
+    width: 30px;
   }
 
   /* Congreso */

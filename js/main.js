@@ -130,3 +130,18 @@ function mostrarCongreso(esSenado) {
 }
 senado.addEventListener("click", () => mostrarCongreso(true));
 camara.addEventListener("click", () => mostrarCongreso(false));
+
+// 4. Degradado inferior de la página
+function actualizarDegradadoPagina() {
+  const alFinal =
+    window.scrollY + window.innerHeight >=
+    document.documentElement.scrollHeight - 2;
+
+  document.body.classList.toggle("fin-pagina", alFinal);
+}
+
+window.addEventListener("scroll", actualizarDegradadoPagina);
+window.addEventListener("resize", actualizarDegradadoPagina);
+window.addEventListener("load", actualizarDegradadoPagina);
+
+actualizarDegradadoPagina();
