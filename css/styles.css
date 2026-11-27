@@ -168,6 +168,10 @@ section {
   height: auto;
 }
 
+.indice-mobile {
+  display: none;
+}
+
 /* Capitolio interactivo */
 .capitolio-interactivo {
   position: relative;
@@ -526,11 +530,45 @@ footer {
   }
 
   /* Capitolio interactivo */
+
+  .indice-desktop {
+    display: none;
+  }
+
+  .indice-mobile {
+    display: block;
+    text-align: center;
+  }
+
+  .indice-capitolio img {
+    align-self: flex-start;
+    margin-top: 3px;
+  }
+
   .capitolio-scroll {
     overflow-x: auto;
     padding-bottom: 16px;
   }
 
+  .capitolio-scroll::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .capitolio-scroll::-webkit-scrollbar-track {
+    background: #bcd3de;
+    margin-inline: 12px;
+  }
+
+  .capitolio-scroll::-webkit-scrollbar-thumb {
+    background: var(--azul);
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    .capitolio-scroll {
+      scrollbar-width: thin;
+      scrollbar-color: var(--azul) #bcd3de;
+    }
+  }
   .graphic-capitolio {
     width: 600px;
     max-width: none;
