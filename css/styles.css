@@ -147,7 +147,7 @@ section {
 }
 
 .dato-monumento {
-  width: 258px;
+  width: 369px;
   margin: 20px auto 0;
 }
 
@@ -619,6 +619,7 @@ footer {
   }
 
   .dato-monumento {
+    width: 279px;
     margin-top: 28px;
   }
 
