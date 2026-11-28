@@ -444,11 +444,15 @@ section {
 
 .graphic-congreso img {
   width: 100%;
+  margin: auto;
 }
 
 .img-senado {
-  max-width: 540px;
-  margin: auto;
+  max-width: 563px;
+}
+
+.img-camara {
+  max-width: 689px;
 }
 
 /* ¿Qué hace? */
